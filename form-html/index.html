@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="PT-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário | IBMS</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class='box'>
+    <form action='' class="form">
+      <fieldset>
+        <legend><b>Cadastro de Voluntário</b></legend>
+        <br>
+        <div class="inputBox">
+          <input type="text" name="name" id="name" class="inputUser required" 
+          autoComplete='off' required oninput="nameValidate()">
+          <label for="name" class="labelInput">Nome Completo</label>
+          <span class='span-required'>Nome deve ter no mínimo 5 caracteres</span>
+        </div>
+        <br><br>
+        <div class="inputBox">
+          <input type="tel" id="phone" name="phone" class='inputUser required' 
+          autoComplete='off' pattern="\([0-9]{2}\)[9]{1}[0-9]{4}-[0-9]{4}" maxlength="14" required>
+          <label for="phone" class="labelInput">Telefone</label>
+        </div>
+
+        <p>Interesse:</p>
+        <input type="radio" id="midiaSocial" value="midiaSocial" 
+        name="interesse" class='radio'>
+        <label for="midiaSocial" class='radio'>Mídia Social</label>
+        <input type="radio" id="projecao" value="projecao" 
+        name="interesse" class='radio'>
+        <label for="projecao" class='radio'>Projeção</label>
+        <br>
+        <input type="radio" id="iluminacao" value="iluminacao" 
+        name="interesse" class='radio'>
+        <label for="iluminacao" class='radio'>Iluminação</label>
+        <input type="radio" id="fotografia" value="fotografia" 
+        name="interesse" class='radio'>
+        <label for="fotografia" class='radio'>Fotografia</label>
+        <br>
+        <input type="radio" id="evangelizacao" value="evangelizacao" 
+        name="interesse" class='radio'>
+        <label for="evangelizacao" class='radio'>Evangelização</label>
+        <input type="radio" id="comunicacao" value="comunicacao" 
+        name="interesse" class='radio'>
+        <label for="comunicacao" class='radio'>Comunicação</label>
+      
+        <br>
+        <br>
+
+        <input type='submit' value='Enviar' id='submit' />
+      </fieldset>
+    </form>
+  </div>
+</body>
+<script src="./script.js"></script>
+</html>
