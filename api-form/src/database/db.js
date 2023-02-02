@@ -5,11 +5,13 @@ const connectDatabase = () => {
 
   mongoose.set('strictQuery', false);
 
-  mongoose.connect("mongodb+srv://root:root@cluster0.idzhpku.mongodb.net/?retryWrites=true&w=majority",
-    { useNewUrlParser: true, useUnifiedTopology: true }
-    )
-    .then(() => console.log("Connected with your database"))
-    .catch((err) => console.log(err));
+  const uri = process.env.MONGODB_URI;
+  mongoose
+    .connect(uri,
+      { useNewUrlParser: true,
+        useUnifiedTopology: true })
+      .then(() => console.log("Connected with your database"))
+      .catch((err) => console.log(err.message));
 }
 
 module.exports = connectDatabase;
