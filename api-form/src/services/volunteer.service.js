@@ -12,10 +12,14 @@ const findById = (id) => {
   return Volunteer.findById(id);
 }
 
-const deleteById = (id) => {
-  Volunteer.deleteOne({_id: id});
+const update = (
+  id,
+  name,
+  phone,
+  interest) => {
+  return Volunteer.findOneAndUpdate({_id: id}, {name,phone,interest});
 }
 
 module.exports = {
-  create,findAll,findById,deleteById
+  create,findAll,findById,update
 };

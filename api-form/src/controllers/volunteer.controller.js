@@ -16,14 +16,24 @@ const findById = async (req,res) => {
   else res.status(400).send({message: "Volunteer not found"});
 }
 
-const deleteById = async (req,res) => {
-  const id = req.params.id;
+const update = async (req,res) => {
+  const {name, phone, interest } = req.body;
+  if(!name && !phone) return res.status(400).send({message: 'Submit at least one field for update'});
 
-  if(mongoose.Types.ObjectId.isValid(id)) {
-    const response = await volunteerService.deleteById(id);
-    res.status(204);
-  }
-  else res.status(400).send({message: "Volunteer not found"});
+  const id = req.params.id;
+  if(!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send({message: 'Invalid ID'});
+  
+  const user = volunteerService.findById(id);
+  if(!user) return res.status(400).send({message: 'Volunteer not found'});
+
+  await volunteerService.update(
+    id,
+    name,
+    phone,
+    interest
+  );
+
+  res.send({message: 'Vounteer successfuly updated'})
 }
 
 const createVolunteer = async (req, res) => {
@@ -53,4 +63,4 @@ const createVolunteer = async (req, res) => {
   }
 }
 
-module.exports = { createVolunteer,findAll,findById,deleteById };
+module.exports = { createVolunteer,findAll,findById,update };

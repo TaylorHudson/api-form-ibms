@@ -4,6 +4,6 @@ const volunteerController = require('../controllers/volunteer.controller')
 route.post('/create', volunteerController.createVolunteer);
 route.get('/', volunteerController.findAll);
 route.get('/:id', volunteerController.findById);
-route.delete('/:id', volunteerController.deleteById);
+route.patch('/update/:id', volunteerController.update);
 
 module.exports = route;
